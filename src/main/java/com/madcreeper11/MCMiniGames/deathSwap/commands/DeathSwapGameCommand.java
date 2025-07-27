@@ -6,7 +6,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.madcreeper11.MCMiniGames.deathSwap.DeathSwapGame;
+import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.deathSwap.DeathSwap;
 
 public class DeathSwapGameCommand implements CommandExecutor {
 
@@ -22,19 +23,16 @@ public class DeathSwapGameCommand implements CommandExecutor {
 			} else {
 				// This condition starts the game
 				Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "DeathSwap has been started!");
-				DeathSwapGame.getGameSettings().initialiseCountdownTimer();
-				DeathSwapGame.getGameManager().initialiseCurrentPlayers();
-				DeathSwapGame.getGameSettings().setGameState(true);
+				PluginMain.getGameManager().switchGame(new DeathSwap());
 				return true;
 			}
 		} else if(args[0].toLowerCase().equals("stop")) {
 			
-			if(!DeathSwapGame.getGameSettings().getGameState()) {
-				sender.sendMessage(ChatColor.RED + "Death swap was never started!");
-			} else {
-				sender.sendMessage(ChatColor.RED + "Death swap has been stopped!");
-				DeathSwapGame.getGameSettings().setGameState(false);
+			if(PluginMain.getGameManager().getCurrentGame() == null) {
+				sender.sendMessage(ChatColor.DARK_RED + "No game is currently running!");
+				return true;
 			}
+			PluginMain.getGameManager().stopGame();
 			return true;
 		}
 		

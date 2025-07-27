@@ -1,6 +1,8 @@
 package com.madcreeper11.MCMiniGames;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.madcreeper11.MCMiniGames.deathSwap.commands.DeathSwapGameCommand;
+
 public class PluginMain extends JavaPlugin {
 
 	private static PluginMain instance;
@@ -17,6 +19,8 @@ public class PluginMain extends JavaPlugin {
     @Override
     public void onEnable() {
 		instance = this;
+		
+        this.getCommand("ds").setExecutor(new DeathSwapGameCommand());
     }
     @Override
     public void onDisable() {

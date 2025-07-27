@@ -14,7 +14,6 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 import com.madcreeper11.MCMiniGames.PluginMain;
-import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
 import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams.Hunter;
 import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams.Speedrunner;
 

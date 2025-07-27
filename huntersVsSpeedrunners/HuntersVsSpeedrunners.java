@@ -1,22 +1,23 @@
 package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners;
 
+import org.bukkit.configuration.file.FileConfiguration;
+
 import com.madcreeper11.MCMiniGames.Minigame;
 import com.madcreeper11.MCMiniGames.PluginMain;
 import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.GameCommand;
 import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.TeamAssignCommand;
 import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.TeamsCommand;
 
-public class HuntersVsSpeedrunners extends Minigame {
+public class HuntersVsSpeedrunners implements Minigame {
 	
 	private static GameManager gameManager;
 	private static GameSettings gameSettings;
 	
-	public HuntersVsSpeedrunnersGameType() {
+	public HuntersVsSpeedrunners() {
 		gameManager = new GameManager();
 		gameSettings = new GameSettings();
 	}
 	
-	@Override
 	public void init() {
 		
         PluginMain.getInstance().getCommand("hvs").setExecutor(new GameCommand());
@@ -31,13 +32,23 @@ public class HuntersVsSpeedrunners extends Minigame {
 	public static GameSettings getGameSettings() {
 		return gameSettings;
 	}
-	
+
 	@Override
-	public void loadGameSettings() {
-		
+	public void start(FileConfiguration config) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'start'");
 	}
+
 	@Override
-	public void saveGameSettings() {
-		
+	public void stop() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'stop'");
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getName'");
 	}
 }
+

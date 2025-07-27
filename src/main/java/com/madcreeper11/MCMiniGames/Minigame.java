@@ -1,8 +1,9 @@
 package com.madcreeper11.MCMiniGames;
 
+import org.bukkit.configuration.file.FileConfiguration;
+
 public interface Minigame {
-    void init();
-    void start();
+    void start(FileConfiguration config);
     void stop();
     String getName();
 }
