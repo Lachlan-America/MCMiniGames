@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -14,9 +14,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.scheduler.BukkitTask;
 
-import MCMiniGames.PluginMain;
-import MCMiniGames.huntersVsSpeedrunners.handlers.TeamHandler;
-import MCMiniGames.huntersVsSpeedrunners.tasks.TimerTask;
+import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.handlers.TeamHandler;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.tasks.TimerTask;
 
 public class GameManager implements Listener {
 

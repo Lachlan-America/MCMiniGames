@@ -1,4 +1,4 @@
-package MCMiniGames.randomItemPVP.tasks;
+package com.madcreeper11.MCMiniGames.randomItemPVP.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import MCMiniGames.randomItemPVP.RandomItemPVPGame;
+import com.madcreeper11.MCMiniGames.randomItemPVP.RandomItemPVPGame;
 
 public class TimerTask extends BukkitRunnable {
 

@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.commands;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands;
 
 import java.util.UUID;
 
@@ -8,8 +8,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
-import MCMiniGames.huntersVsSpeedrunners.handlers.TeamHandler;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.handlers.TeamHandler;
 
 public class TeamAssignCommand implements CommandExecutor {
 

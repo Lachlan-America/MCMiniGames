@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.util;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.util;
 
 import org.bukkit.Location;
 

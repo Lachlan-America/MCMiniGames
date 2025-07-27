@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.tasks;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
 
 public class TimerTask extends BukkitRunnable {
 

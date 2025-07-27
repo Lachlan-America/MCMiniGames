@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.teams;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams;
 
 import java.util.UUID;
 
@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World.Environment;
 
-import MCMiniGames.huntersVsSpeedrunners.util.LocationSet;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.util.LocationSet;
 
 public abstract class CommonPlayer {
 

@@ -1,4 +1,4 @@
-package MCMiniGames;
+package com.madcreeper11.MCMiniGames;
 
 import java.util.Collection;
 import java.util.HashMap;

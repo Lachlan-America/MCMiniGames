@@ -1,8 +1,8 @@
-package MCMiniGames.huntersVsSpeedrunners;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.PluginMain;
 
 public class GameSettings {
 

@@ -1,9 +1,9 @@
-package MCMiniGames.randomItemPVP;
-import MCMiniGames.GameType;
-import MCMiniGames.PluginMain;
-import MCMiniGames.randomItemPVP.commands.GameCommand;
+package com.madcreeper11.MCMiniGames.randomItemPVP;
+import com.madcreeper11.MCMiniGames.Minigame;
+import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.randomItemPVP.commands.GameCommand;
 
-public class RandomItemPVPGame implements GameType {
+public class RandomItemPVP extends Minigame {
 
 	private static GameManager gameManager;
 	private static GameSettings gameSettings;

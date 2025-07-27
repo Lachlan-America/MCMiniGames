@@ -1,4 +1,4 @@
-package MCMiniGames.deathSwap;
+package com.madcreeper11.MCMiniGames.deathSwap;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,7 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.PluginMain;
 
 public class DeathSwapGameManager implements Listener {
 	

@@ -1,4 +1,4 @@
-package MCMiniGames.randomItemPVP;
+package com.madcreeper11.MCMiniGames.randomItemPVP;
 
 public class GameSettings {
 

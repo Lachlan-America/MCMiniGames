@@ -1,12 +1,12 @@
-package MCMiniGames.huntersVsSpeedrunners;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners;
 
-import MCMiniGames.GameType;
-import MCMiniGames.PluginMain;
-import MCMiniGames.huntersVsSpeedrunners.commands.GameCommand;
-import MCMiniGames.huntersVsSpeedrunners.commands.TeamAssignCommand;
-import MCMiniGames.huntersVsSpeedrunners.commands.TeamsCommand;
+import com.madcreeper11.MCMiniGames.Minigame;
+import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.GameCommand;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.TeamAssignCommand;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands.TeamsCommand;
 
-public class HuntersVsSpeedrunnersGameType implements GameType {
+public class HuntersVsSpeedrunners extends Minigame {
 	
 	private static GameManager gameManager;
 	private static GameSettings gameSettings;

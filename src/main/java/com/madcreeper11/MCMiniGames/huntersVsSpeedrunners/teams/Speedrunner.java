@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.teams;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams;
 
 import java.util.UUID;
 

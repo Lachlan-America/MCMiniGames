@@ -1,4 +1,4 @@
-package MCMiniGames.randomItemPVP;
+package com.madcreeper11.MCMiniGames.randomItemPVP;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.PluginMain;
 
 public class GameManager implements Listener {
 
@@ -46,7 +46,7 @@ public class GameManager implements Listener {
 		        List<Entity> entList = world.getEntities();
 		 
 		        for(Entity current : entList){
-		            if (current.getType() == EntityType.DROPPED_ITEM){
+		            if (current.getType() == EntityType.ITEM){
 		            	Item currentItem = (Item) current;
 		            	ItemStack itemS = currentItem.getItemStack();
 		            	currentItem.remove();

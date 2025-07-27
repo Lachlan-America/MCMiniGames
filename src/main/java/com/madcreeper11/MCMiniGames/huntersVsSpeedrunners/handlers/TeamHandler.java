@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.handlers;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.handlers;
 
 import java.util.UUID;
 import java.util.HashMap;
@@ -13,10 +13,10 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import MCMiniGames.PluginMain;
-import MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
-import MCMiniGames.huntersVsSpeedrunners.teams.Hunter;
-import MCMiniGames.huntersVsSpeedrunners.teams.Speedrunner;
+import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams.Hunter;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.teams.Speedrunner;
 
 public class TeamHandler implements Listener {
 

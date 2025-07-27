@@ -4,28 +4,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PluginMain extends JavaPlugin {
 
 	private static PluginMain instance;
-	private GameTypeRegistry gameTypeRegistry;
-	
-	public PluginMain() {		
-		// Singleton pattern to ensure only one instance of the plugin exists
-		if(instance == null) {
-			instance = this;
-		}
-	}
+	private static final GameManager gameManager = new GameManager();
 	
 	// Getter for the main plugin
     public static PluginMain getInstance() {
     	return instance;
     }
-
+	public static GameManager getGameManager() {
+		return gameManager;
+	}
+	
     @Override
     public void onEnable() {
-    	this.getConfig().options().copyDefaults(true);
-		this.gameTypeRegistry = new GameTypeRegistry();
+		instance = this;
     }
-    
     @Override
     public void onDisable() {
-    	//TODO: Save settings for individual game types
+
     }
 }

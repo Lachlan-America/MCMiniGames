@@ -1,4 +1,4 @@
-package MCMiniGames.deathSwap;
+package com.madcreeper11.MCMiniGames.deathSwap;
 
 import java.util.Random;
 

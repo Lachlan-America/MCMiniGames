@@ -1,4 +1,4 @@
-package MCMiniGames.randomItemPVP.commands;
+package com.madcreeper11.MCMiniGames.randomItemPVP.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import MCMiniGames.randomItemPVP.RandomItemPVPGame;
+import com.madcreeper11.MCMiniGames.randomItemPVP.RandomItemPVPGame;
 
 public class GameCommand implements CommandExecutor {
 

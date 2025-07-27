@@ -1,4 +1,4 @@
-package MCMiniGames.huntersVsSpeedrunners.commands;
+package com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
+import com.madcreeper11.MCMiniGames.huntersVsSpeedrunners.HuntersVsSpeedrunnersGameType;
 
 // The command that initiates the Hunters vs Speedrunners game type
 public class GameCommand implements CommandExecutor {

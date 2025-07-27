@@ -1,4 +1,4 @@
-package MCMiniGames.deathSwap.commands;
+package com.madcreeper11.MCMiniGames.deathSwap.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import MCMiniGames.deathSwap.DeathSwapGame;
+import com.madcreeper11.MCMiniGames.deathSwap.DeathSwapGame;
 
 public class DeathSwapGameCommand implements CommandExecutor {
 
