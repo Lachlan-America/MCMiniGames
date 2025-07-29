@@ -3,6 +3,8 @@ package com.madcreeper11.MCMiniGames.deathSwap;
 import com.madcreeper11.MCMiniGames.Minigame;
 import com.madcreeper11.MCMiniGames.PluginMain;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +17,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.event.EventHandler;
@@ -26,19 +29,42 @@ public class DeathSwap implements Minigame, Listener {
 	private BukkitRunnable gameTask;
 	
 	// Time in seconds
-	private int minSwapTime;
-	private int maxSwapTime;
-	private int warningTime;
+	private int minSwapTime = 180;
+	private int maxSwapTime = 300;
+	private int warningTime = 15;
 	private int countdownTime;
 	private Random random;
 	private List<UUID> participants = new ArrayList<UUID>();
 	private List<UUID> aliveUUIDs = new ArrayList<UUID>();
 
-	public void init(FileConfiguration config) {
-		// Load game settings from config
-		minSwapTime = config.getInt("minSwapTime", 180); // Default to 3 minutes
-		maxSwapTime = config.getInt("maxSwapTime", 300); // Default to 5 minutes
-		warningTime = config.getInt("warningTime", 15); // Default to 15 seconds
+	public void init() {
+
+		File configFile = new File(PluginMain.getInstance().getDataFolder(), "DeathSwap.yml");
+
+		if (!configFile.exists()) {
+			// Create parent directory if needed
+			PluginMain.getInstance().getDataFolder().mkdirs();
+
+			try {
+				configFile.createNewFile();
+
+				// Create default config
+				YamlConfiguration config = new YamlConfiguration();
+				config.set("game.minSwapTime", minSwapTime);
+				config.set("game.maxSwapTime", maxSwapTime);
+				config.set("game.warningTime", warningTime);
+				config.save(configFile);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			// Load game settings from config
+			YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+			minSwapTime = config.getInt("game.minSwapTime", 180); // Default to 3 minutes
+			maxSwapTime = config.getInt("game.maxSwapTime", 300); // Default to 5 minutes
+			warningTime = config.getInt("game.warningTime", 15); // Default to 15 seconds
+		}
 		random = new Random();
 		
 		participants.clear();
@@ -55,8 +81,8 @@ public class DeathSwap implements Minigame, Listener {
 	}
 
     @Override
-    public void start(FileConfiguration config) {
-		this.init(config);
+    public void start() {
+		this.init();
 
         gameTask = new BukkitRunnable() {
             @Override

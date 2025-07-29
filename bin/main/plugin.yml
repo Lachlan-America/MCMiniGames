@@ -6,8 +6,8 @@ description: Includes a range of different minigames
 author: madcreeper11
 commands:  
  ds:
-  description: Dictates the game state for deathswap
-  aliases:
+  description: Dictates the game state for deathswap.
+  usage: /ds [start/stop]
   permission: deathSwap.game
-  permission-message: You do not have permission!
-  usage: /<command> [start/stop]
+  permission-message: You do not have permission to use this command.
+  aliases: [deathswap, ds]
