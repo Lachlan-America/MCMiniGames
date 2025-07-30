@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.madcreeper11.MCMiniGames.PluginMain;
-import com.madcreeper11.MCMiniGames.deathSwap.DeathSwap;
 
 public class DeathSwapGameCommand implements CommandExecutor {
 
@@ -25,7 +24,7 @@ public class DeathSwapGameCommand implements CommandExecutor {
 				} else {
 					// This condition starts the game
 					Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "DeathSwap has been started!");
-					PluginMain.getGameManager().switchGame(new DeathSwap());
+					PluginMain.getGameManager().switchGame(PluginMain.getInstance().getDeathSwap());
 					return true;
 				}
 			}

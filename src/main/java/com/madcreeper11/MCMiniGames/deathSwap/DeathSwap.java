@@ -1,10 +1,9 @@
 package com.madcreeper11.MCMiniGames.deathSwap;
 
-import com.madcreeper11.MCMiniGames.Minigame;
 import com.madcreeper11.MCMiniGames.PluginMain;
+import com.madcreeper11.MCMiniGames.util.GameConfig;
+import com.madcreeper11.MCMiniGames.util.Minigame;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,55 +15,48 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class DeathSwap implements Minigame, Listener {
-	private BukkitRunnable gameTask;
+public class DeathSwap extends GameConfig implements Minigame, Listener {
+	private BukkitTask gameTask;
 	
 	// Time in seconds
-	private int minSwapTime = 180;
-	private int maxSwapTime = 300;
-	private int warningTime = 15;
+	private int minSwapTime;
+	private int maxSwapTime;
+	private int warningTime;
 	private int countdownTime;
 	private Random random;
 	private List<UUID> participants = new ArrayList<UUID>();
 	private List<UUID> aliveUUIDs = new ArrayList<UUID>();
 
+	public DeathSwap() {
+		// Generates config file if it doesn't exist
+		// This will be used to load game settings
+        super("DeathSwap.yml");
+    }
+
+	@Override
+	public void setDefaults() {
+		config.set("minSwapTime", 180);
+		config.set("maxSwapTime", 300);
+		config.set("warningTime", 15);
+	}
+
+	@Override
+	public void loadValues() {
+		minSwapTime = config.getInt("minSwapTime");
+		maxSwapTime = config.getInt("maxSwapTime");
+		warningTime = config.getInt("warningTime");
+	}
+
 	public void init() {
-
-		File configFile = new File(PluginMain.getInstance().getDataFolder(), "DeathSwap.yml");
-
-		if (!configFile.exists()) {
-			// Create parent directory if needed
-			PluginMain.getInstance().getDataFolder().mkdirs();
-
-			try {
-				configFile.createNewFile();
-
-				// Create default config
-				YamlConfiguration config = new YamlConfiguration();
-				config.set("game.minSwapTime", minSwapTime);
-				config.set("game.maxSwapTime", maxSwapTime);
-				config.set("game.warningTime", warningTime);
-				config.save(configFile);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			// Load game settings from config
-			YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-			minSwapTime = config.getInt("game.minSwapTime", 180); // Default to 3 minutes
-			maxSwapTime = config.getInt("game.maxSwapTime", 300); // Default to 5 minutes
-			warningTime = config.getInt("game.warningTime", 15); // Default to 15 seconds
-		}
+		loadValues();
 		random = new Random();
 		
 		participants.clear();
@@ -74,16 +66,20 @@ public class DeathSwap implements Minigame, Listener {
 			UUID id = player.getUniqueId();
 			participants.add(id);
 			aliveUUIDs.add(id);
+			Bukkit.broadcastMessage("§c[DeathSwap] §7" + player.getName() + " has joined the game!");
 		}
 
 		Bukkit.broadcastMessage("§c[DeathSwap] §7Game is starting with swap time between " + (minSwapTime / 60) + " and " + (maxSwapTime / 60) + " minutes.");
 		countdownTime = minSwapTime + random.nextInt(maxSwapTime - minSwapTime + 1);
+		Bukkit.broadcastMessage("§cDEBUG: [DeathSwap] §7Countdown chosen to be: " + Math.floor(countdownTime / 60) + " minutes and " + (countdownTime % 60) + " seconds.");
 	}
 
     @Override
     public void start() {
-		this.init();
+		init();
+		stop();
 
+		Bukkit.getLogger().info("Starting task");
         gameTask = new BukkitRunnable() {
             @Override
             public void run() {
@@ -100,8 +96,7 @@ public class DeathSwap implements Minigame, Listener {
 				
 				countdownTime--;
             }
-        };
-        gameTask.runTaskTimer(PluginMain.getInstance(), 0L, 20L);
+        }.runTaskTimer(PluginMain.getInstance(), 0L, 20L);
     }
 
 	private void swapPlayers() {
@@ -123,10 +118,21 @@ public class DeathSwap implements Minigame, Listener {
 		}
 	}
 
+	@Override
+    public void stop() {
+        if (gameTask != null) {
+		    Bukkit.getLogger().info("Cancelling task");
+			gameTask.cancel();
+		} else {
+			Bukkit.getLogger().info("No task to cancel");
+		}
+    }
+
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
 		UUID id = event.getEntity().getUniqueId();
 		aliveUUIDs.remove(id);
+		Bukkit.broadcastMessage("§c[DeathSwap] §7" + event.getEntity().getName() + " has died!");
 		if (aliveUUIDs.size() <= 1) {
 			// Moves to the next person in the sequence (last alive player)
 			UUID winner = aliveUUIDs.isEmpty() ? null : aliveUUIDs.iterator().next();
@@ -135,7 +141,7 @@ public class DeathSwap implements Minigame, Listener {
 			} else {
 				Bukkit.broadcastMessage("§c[DeathSwap] §7No players left, game over!");
 			}
-			this.stop();
+			stop();
 		}
 	}
 
@@ -145,14 +151,4 @@ public class DeathSwap implements Minigame, Listener {
 			event.getPlayer().setGameMode(GameMode.SPECTATOR);
 		}
 	}
-
-    @Override
-    public void stop() {
-        if (gameTask != null) gameTask.cancel();
-    }
-
-    @Override
-    public String getName() {
-        return "DeathSwap";
-    }
 }
